@@ -7,11 +7,11 @@ function Customer() {
   function handleClick() {}
 
   return (
-    <div>
+    <div className="customer">
       <h2>Create new customer</h2>
       <div className="inputs">
         <div>
-          <label>Customer full name</label>
+          <label>Full name</label>
           <input
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
