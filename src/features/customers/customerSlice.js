@@ -1,10 +1,3 @@
-const currentDate = new Date();
-const formattedDate = currentDate.toLocaleDateString("en-US", {
-  month: "2-digit",
-  day: "2-digit",
-  year: "numeric",
-});
-
 const initialStateCustomer = {
   fullName: "",
   nationalID: "",
@@ -13,7 +6,7 @@ const initialStateCustomer = {
 
 export default function customerReducer(state = initialStateCustomer, action) {
   switch (action.type) {
-    case "createCustomer":
+    case "customer/createCustomer":
       return {
         ...state,
         fullName: action.payload.fullName,
@@ -21,7 +14,7 @@ export default function customerReducer(state = initialStateCustomer, action) {
         createdAt: action.payload.createdAt,
       };
 
-    case "updateName":
+    case "customer/updateName":
       return { ...state, fullName: action.payload };
 
     default:
@@ -33,7 +26,7 @@ export default function customerReducer(state = initialStateCustomer, action) {
 export function createCustomer(fullName, nationalID) {
   return {
     type: "customer/createCustomer",
-    payload: { fullName, nationalID, createdAt: formattedDate },
+    payload: { fullName, nationalID, createdAt: new Date().toISOString() },
   };
 }
 
